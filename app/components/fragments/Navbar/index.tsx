@@ -4,8 +4,8 @@ import { useState } from 'react';
 import Logo from '../../ui/Logo';
 import NavList from '../../ui/NavList';
 import { NavbarLists } from './partials/NavbarLists';
-import { Button, Drawer, Badge } from 'antd';
-import { ShoppingCartOutlined } from '@ant-design/icons';
+import { Button, Drawer, Badge, Select, Input } from 'antd';
+import { EditOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 
 export default function Navbar() {
     const [open, setOpen] = useState(false);
@@ -37,13 +37,43 @@ export default function Navbar() {
                             </Button>
                         </Badge>
                         <Drawer
-                            title="Basic Drawer"
+                            title="Terios Coffee Order"
                             onClose={onClose}
                             open={open}
                         >
-                            <p>Some contents...</p>
-                            <p>Some contents...</p>
-                            <p>Some contents...</p>
+                            <div className="flex">
+                                <div className="w-[30%]">
+                                    <img
+                                        src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/flat-white-3402c4f.jpg"
+                                        alt=""
+                                    />
+                                </div>
+                                <div className="w-[70%] px-4 flex flex-col gap-2">
+                                    <h1>Coffee cappucino</h1>
+                                    <Select
+                                        style={{ width: '100%' }}
+                                        defaultValue={'Hot'}
+                                        disabled
+                                    />
+                                    <Input
+                                        value={'tidak ada note..'}
+                                        disabled
+                                    />
+                                    <div className="flex justify-between text-sm font-light px-2 text-gray-500">
+                                        <em>1 x 25.000</em>
+                                        <b>25.000</b>
+                                    </div>
+                                    <div className="flex justify-end">
+                                        <Button
+                                            style={{
+                                                width: '20%',
+                                            }}
+                                        >
+                                            <EditOutlined />
+                                        </Button>
+                                    </div>
+                                </div>
+                            </div>
                         </Drawer>
                     </div>
                 </div>
