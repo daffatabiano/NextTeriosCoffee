@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import Navbar from './components/fragments/Navbar';
 import Jumbotron from './components/fragments/Jumbotron';
+import { AntdRegistry } from '@ant-design/nextjs-registry';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,9 +20,11 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={inter.className}>
-                <Jumbotron />
-                <Navbar />
-                {children}
+                <AntdRegistry>
+                    <Jumbotron />
+                    <Navbar />
+                    {children}
+                </AntdRegistry>
             </body>
         </html>
     );

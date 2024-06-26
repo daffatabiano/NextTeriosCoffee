@@ -8,11 +8,7 @@ export default function NavList({ items }: NavListProps) {
         <>
             {items.map((item, index) => (
                 <li key={index}>
-                    <a
-                        href={item.path}
-                        className={`text-gray-900 ${style.line}`}
-                        aria-current={index === 0 ? 'page' : undefined}
-                    >
+                    <a href={item.path} className={style.line}>
                         {item.name}
                     </a>
                 </li>

@@ -20,7 +20,6 @@ export default function Jumbotron() {
                         maskRepeat: 'no-repeat',
                         maskPosition: 'center',
                         maskSize: 'cover',
-                        boxShadow: '0 0 0px 5px rgba(0, 0, 0, 0.5)',
                     }}
                 >
                     <div className="z-10 flex w-full justify-between px-4 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-3xl">

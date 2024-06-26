@@ -1,6 +1,6 @@
 export default function Tagline() {
     return (
-        <div className="md:w-[65%] md:text-start text-center w-full md:pt-5 ps-5 text-white uppercase">
+        <div className="md:w-[65%] md:text-start text-center w-full  md:pt-5 ps-5 text-white uppercase">
             <h1 className="text-6xl font-bold tracking-wide [text-shadow:0_3px_1px_rgba(0,0,0,0.4)]">
                 start your day with a cup of{' '}
                 <span className="text-yellow-900">coffee!</span>

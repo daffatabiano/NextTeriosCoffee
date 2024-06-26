@@ -43,7 +43,7 @@ export default function ImageList({
                         style={{
                             filter: onScroll
                                 ? 'brightness(50%)'
-                                : 'blur(2px) sepia(0.8) brightness(70%)',
+                                : 'blur(2px) sepia(0.5) brightness(70%)',
                         }}
                         alt={item.alt}
                     />
