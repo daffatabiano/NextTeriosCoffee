@@ -1,0 +1,16 @@
+.line::before {
+    content: '';
+    position: absolute;
+    display: inline-block;
+    bottom: 0;
+    width: 2.5%;
+    height: 2px;
+    transform: scaleX(0);
+    background-color: #000;
+}
+
+.line::before:hover {
+    display: inline-block;
+    transform: scaleX(1);
+    transition: width 0.3s ease;
+}
