@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Tagline() {
     return (
         <div className="md:w-[65%] md:text-start text-center w-full  md:pt-5 ps-5 text-white uppercase">
@@ -9,9 +11,12 @@ export default function Tagline() {
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi
                 ullam quae, exercitationem aliquam velit earum.
             </p>
-            <button className="focus:outline-none md:mt-[50px] mt-10 text-white text-lg bg-yellow-800 hover:bg-yellow-900 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">
+            <Link
+                href="#menu"
+                className="focus:outline-none md:mt-[50px] mt-10 text-white text-lg bg-yellow-800 hover:bg-yellow-900 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900"
+            >
                 Buy Now
-            </button>
+            </Link>
         </div>
     );
 }

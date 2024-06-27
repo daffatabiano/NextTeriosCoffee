@@ -40,7 +40,11 @@ export default function Menu() {
                     menu
                 </h1>
                 <h2 className="text-xl font-bold mb-2"> ☕ Hot Coffee </h2>
-                <Card onClick={showModal} />
+                <div className="flex flex-col gap-4">
+                    <Card onClick={showModal} />
+                    <Card onClick={showModal} />
+                    <Card onClick={showModal} />
+                </div>
                 <h2 className="text-xl font-bold mb-2"> 🧊 Ice Coffee </h2>
                 <Card />
             </Col>
