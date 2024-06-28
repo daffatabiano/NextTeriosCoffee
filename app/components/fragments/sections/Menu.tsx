@@ -3,7 +3,7 @@
 import { Fragment, useState } from 'react';
 import { Col, Modal, Select, Input } from 'antd';
 import Card from '@/app/components/ui/Card';
-import { CoffeeOutlined } from '@ant-design/icons';
+import { MenuData } from './partials/data/MenuData';
 
 export default function Menu() {
     const [open, setOpen] = useState(false);
@@ -41,12 +41,11 @@ export default function Menu() {
                 </h1>
                 <h2 className="text-xl font-bold mb-2"> ☕ Hot Coffee </h2>
                 <div className="flex flex-col gap-4">
-                    <Card onClick={showModal} />
-                    <Card onClick={showModal} />
-                    <Card onClick={showModal} />
+                    {MenuData.map((item, index) => (
+                        <Card key={index} {...item} onClick={showModal} />
+                    ))}
                 </div>
                 <h2 className="text-xl font-bold mb-2"> 🧊 Ice Coffee </h2>
-                <Card />
             </Col>
             <Modal
                 title="Terios Coffee Order"
