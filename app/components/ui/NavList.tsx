@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import style from './NavList.module.css';
 
 type NavListProps = {
@@ -8,9 +9,14 @@ export default function NavList({ items }: NavListProps) {
         <>
             {items.map((item, index) => (
                 <li key={index}>
-                    <a href={item.path} className={style.line}>
+                    <Link
+                        href={item.path}
+                        className={
+                            item.name === 'Login' ? style.login : style.line
+                        }
+                    >
                         {item.name}
-                    </a>
+                    </Link>
                 </li>
             ))}
         </>

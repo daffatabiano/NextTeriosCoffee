@@ -4,6 +4,7 @@ import './globals.css';
 import Navbar from './components/fragments/Navbar';
 import Jumbotron from './components/fragments/Jumbotron';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
+import { useRouter } from 'next/navigation';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,11 +21,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={inter.className}>
-                <AntdRegistry>
-                    <Jumbotron />
-                    <Navbar />
-                    {children}
-                </AntdRegistry>
+                <AntdRegistry>{children}</AntdRegistry>
             </body>
         </html>
     );

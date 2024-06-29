@@ -15,4 +15,8 @@ export const NavbarLists = [
         path: '#products',
         name: 'Products',
     },
+    {
+        path: '/login',
+        name: 'Login',
+    },
 ];

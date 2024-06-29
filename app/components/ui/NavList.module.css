@@ -14,3 +14,17 @@
     transform: scaleX(1);
     transition: width 0.3s ease;
 }
+
+.login {
+    @apply bg-yellow-500;
+    @apply text-white;
+    @apply px-6;
+    @apply py-2;
+    @apply rounded-full;
+    @apply font-bold;
+    @apply text-sm;
+    @apply hover:bg-yellow-700;
+    @apply transition-all;
+    @apply md:absolute;
+    @apply md:right-5 md:top-[62.5%];
+}
