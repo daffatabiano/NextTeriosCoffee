@@ -4,18 +4,28 @@ import { Fragment, useState } from 'react';
 import { Col, Modal, Select, Input } from 'antd';
 import Card from '@/app/components/ui/Card';
 import { MenuData } from './partials/data/MenuData';
+import ModalOrder, { eventChange } from '../ModalOrder';
 
 export default function Menu() {
     const [open, setOpen] = useState(false);
     const [confirmLoading, setConfirmLoading] = useState(false);
-    const [modalText, setModalText] = useState('Content of the modal');
-    const { TextArea } = Input;
+    const [notes, setNotes] = useState('');
+    const [isVariant, setIsVariant] = useState('');
     const showModal = () => {
         setOpen(true);
+    };
+    const onChangeSelect = (e: any) => {
+        setIsVariant(e);
+    };
+
+    const onChangeNotes = (e: eventChange) => {
+        setNotes(e?.target?.value);
     };
 
     const handleOk = () => {
         setConfirmLoading(true);
+        setIsVariant(isVariant);
+        setNotes(notes);
         setTimeout(() => {
             setOpen(false);
             setConfirmLoading(false);
@@ -47,7 +57,15 @@ export default function Menu() {
                 </div>
                 <h2 className="text-xl font-bold mb-2"> 🧊 Ice Coffee </h2>
             </Col>
-            <Modal
+            <ModalOrder
+                isOpen={open}
+                handleOk={handleOk}
+                handleCancel={handleCancel}
+                confirmLoading={confirmLoading}
+                onChangeSelect={onChangeSelect}
+                onChangeNotes={onChangeNotes}
+            />
+            {/* <Modal
                 title="Terios Coffee Order"
                 open={open}
                 confirmLoading={confirmLoading}
@@ -64,7 +82,7 @@ export default function Menu() {
                     </div>
                     <div className="w-[60%] flex flex-col gap-1 px-2">
                         <h1 className="font-bold text-yellow-500">
-                            Coffee Cappucino
+                            {'Coffee Cappucino'}
                         </h1>
                         <Select
                             aria-required
@@ -88,7 +106,7 @@ export default function Menu() {
                         />
                     </div>
                 </div>
-            </Modal>
+            </Modal> */}
         </Fragment>
     );
 }
