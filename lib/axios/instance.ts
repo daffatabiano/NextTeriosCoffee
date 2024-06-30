@@ -1,16 +1,15 @@
 import axios from 'axios';
 
-const headers = {
+const Headers = {
     'Content-Type': 'application/json',
     Accept: 'application/json',
     'Cache-Control': 'no-cache',
-    'Api-Key': process.env.NEXT_PUBLIC_API_KEY,
-    Expires: '0',
+    ApiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
 };
 
 const instance = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_API_URL,
-    headers: headers,
+    baseURL: process.env.NEXT_PUBLIC_FIREBASE_API_URL,
+    headers: Headers,
     timeout: 60 * 1000,
 });
 
@@ -24,7 +23,7 @@ instance.interceptors.request.use(
     (error) => Promise.reject(error)
 );
 
-export const fetcher = (url: string) => {
+export const fetcher = (url: string): Promise<any> => {
     return instance
         .get(url)
         .then((res) => {

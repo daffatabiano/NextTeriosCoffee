@@ -9,7 +9,7 @@ import {
     updateDoc,
     where,
 } from 'firebase/firestore';
-import app from './init';
+import app from './firebase';
 
 const firebase = getFirestore(app);
 

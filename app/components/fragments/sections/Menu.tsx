@@ -5,26 +5,23 @@ import { Col } from 'antd';
 import Card from '@/app/components/ui/Card';
 import { MenuData } from './partials/data/MenuData';
 import ModalOrder, { eventChange } from '../ModalOrder';
-import { postData } from '@/app/services/postData';
-import getData from '@/app/services/getData';
+import { fetcher } from '@/lib/axios/instance';
 
 export default function Menu() {
     const [open, setOpen] = useState(false);
     const [confirmLoading, setConfirmLoading] = useState(false);
     const [notes, setNotes] = useState('');
     const [isVariant, setIsVariant] = useState('');
-    const [isProducts, setIsProducts] = useState([]);
+    const [isProducts, setIsProducts]: any = useState<any>([]);
     const showModal = () => {
         setOpen(true);
     };
     const onChangeSelect = (e: any) => {
         setIsVariant(e);
-        postData('api/products', { variant: e });
     };
 
     const onChangeNotes = (e: eventChange) => {
         setNotes(e?.target?.value);
-        postData('api/products', { notes: e?.target?.value });
     };
 
     const handleOk = () => {
@@ -39,14 +36,22 @@ export default function Menu() {
         console.log('Clicked cancel button');
         setOpen(false);
     };
-    const getAllProducts = async () => {
-        const { data }: any = await getData.products();
-        setIsProducts(data?.data);
+
+    const getProductsData = async () => {
+        try {
+            const response = await fetcher('/api/products');
+            const data = response;
+            setIsProducts(data.data);
+        } catch (error) {
+            console.log(error);
+        }
     };
+
     useEffect(() => {
-        getAllProducts();
+        getProductsData();
     }, []);
 
+    console.log(isProducts);
     return (
         <Fragment key="menu">
             <Col
@@ -62,7 +67,7 @@ export default function Menu() {
                 </h1>
                 <h2 className="text-xl font-bold mb-2"> ☕ Hot Coffee </h2>
                 <div className="flex flex-col gap-4">
-                    {MenuData.map((item, index) => (
+                    {isProducts?.map((item, index): any => (
                         <Card key={index + 1} {...item} onClick={showModal} />
                     ))}
                 </div>
