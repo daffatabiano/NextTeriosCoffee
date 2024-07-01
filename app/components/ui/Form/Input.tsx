@@ -2,12 +2,14 @@ export default function Input({
     type,
     name,
     placeholder,
+    req,
     ...rest
 }: {
     type: 'text' | 'email' | 'password';
     name: string;
     placeholder: string;
     [key: string]: any;
+    req?: boolean;
 }) {
     return (
         <input
@@ -16,6 +18,8 @@ export default function Input({
             type={type}
             name={name}
             placeholder={placeholder}
+            autoComplete="off"
+            required={req}
         />
     );
 }

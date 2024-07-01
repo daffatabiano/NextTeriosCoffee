@@ -1,19 +1,19 @@
 export const NavbarLists = [
     {
         path: '#',
-        name: 'Home',
+        name: 'Coffee',
     },
     {
         path: '#menu',
-        name: 'Menu',
+        name: 'Tea',
     },
     {
         path: '#about',
-        name: 'About',
+        name: 'Food',
     },
     {
         path: '#products',
-        name: 'Products',
+        name: 'Beverage',
     },
     {
         path: '/login',
