@@ -57,7 +57,7 @@ export default function page() {
                     <div className="flex flex-col justify-center items-center">
                         <Button type="button" text="Sign In" />
                         <Link
-                            href="/admin-login"
+                            href="/login/admin"
                             className="text-blue-950 no-underline"
                         >
                             Login as Admin
@@ -89,7 +89,7 @@ export default function page() {
                     defaultActiveKey="1"
                     items={items}
                     onChange={onChange}
-                    indicator={{ size: 100, align: 'center' }}
+                    indicator={{ size: 200, align: 'center' }}
                     tabBarGutter={225}
                 />
             </div>
