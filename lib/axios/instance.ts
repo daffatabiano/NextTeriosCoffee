@@ -38,15 +38,4 @@ export const fetcher = (url: string): Promise<any> => {
         });
 };
 
-export const postFetcher = (url: string, data: any): Promise<any> => {
-    return instance
-        .post(url, data)
-        .then((res) => {
-            return res.data;
-        })
-        .catch((error) => {
-            throw new Error(error);
-        });
-};
-
 export default instance;

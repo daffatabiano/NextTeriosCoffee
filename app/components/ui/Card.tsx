@@ -12,9 +12,9 @@ export default function Card(props: any) {
     const { onClick, img, name, price, category } = props;
     return (
         <div className="flex justify-between h-[100px] border-[1.5px] shadow-[0_0_4px_2px] shadow-slate-200 border-yellow-500 rounded-xl overflow-hidden">
-            <div className="w-[30%] h-full">
+            <div className="w-[30%] md:w-[20%] h-full">
                 <img
-                    className="bg-cover bg-center bg-no-repeat h-full w-full m-0"
+                    className=" h-full w-full m-0 object-cover object-center "
                     src={img}
                     alt="coffee cup"
                 />

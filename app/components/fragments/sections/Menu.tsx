@@ -72,7 +72,7 @@ export default function Menu() {
                 <h2 className="text-xl font-bold mb-2"> ☕ Hot Coffee </h2>
                 <div className="flex flex-col gap-4">
                     {isProducts?.map((item, index): any =>
-                        isLoading ? (
+                        isProducts.length <= 0 || isLoading ? (
                             <Skeleton key={index + 1} active />
                         ) : (
                             <Card
