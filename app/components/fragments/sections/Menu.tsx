@@ -1,7 +1,7 @@
 'use client';
 
 import { Fragment, useEffect, useState } from 'react';
-import { Col } from 'antd';
+import { Col, Skeleton } from 'antd';
 import Card from '@/app/components/ui/Card';
 import { MenuData } from './partials/data/MenuData';
 import ModalOrder, { eventChange } from '../ModalOrder';
@@ -10,6 +10,7 @@ import { fetcher } from '@/lib/axios/instance';
 export default function Menu() {
     const [open, setOpen] = useState(false);
     const [confirmLoading, setConfirmLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const [notes, setNotes] = useState('');
     const [isVariant, setIsVariant] = useState('');
     const [isProducts, setIsProducts]: any = useState<any>([]);
@@ -38,12 +39,15 @@ export default function Menu() {
     };
 
     const getProductsData = async () => {
+        setIsLoading(true);
         try {
             const response = await fetcher('/api/products');
             const data = response;
             setIsProducts(data.data);
+            setIsLoading(false);
         } catch (error) {
             console.log(error);
+            setIsLoading(false);
         }
     };
 
@@ -67,9 +71,17 @@ export default function Menu() {
                 </h1>
                 <h2 className="text-xl font-bold mb-2"> ☕ Hot Coffee </h2>
                 <div className="flex flex-col gap-4">
-                    {isProducts?.map((item, index): any => (
-                        <Card key={index + 1} {...item} onClick={showModal} />
-                    ))}
+                    {isProducts?.map((item, index): any =>
+                        isLoading ? (
+                            <Skeleton key={index + 1} active />
+                        ) : (
+                            <Card
+                                key={index + 1}
+                                {...item}
+                                onClick={showModal}
+                            />
+                        )
+                    )}
                 </div>
                 <h2 className="text-xl font-bold mb-2"> 🧊 Ice Coffee </h2>
             </Col>
@@ -81,48 +93,6 @@ export default function Menu() {
                 onChangeSelect={onChangeSelect}
                 onChangeNotes={onChangeNotes}
             />
-            {/* <Modal
-                title="Terios Coffee Order"
-                open={open}
-                confirmLoading={confirmLoading}
-                onCancel={handleCancel}
-                onOk={handleOk}
-            >
-                <div className="flex gap-5 align-center">
-                    <div className="w-[40%] h-full m-auto">
-                        <img
-                            src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/flat-white-3402c4f.jpg"
-                            alt=""
-                            className="bg-cover bg-center bg-no-repeat h-full w-full m-0"
-                        />
-                    </div>
-                    <div className="w-[60%] flex flex-col gap-1 px-2">
-                        <h1 className="font-bold text-yellow-500">
-                            {'Coffee Cappucino'}
-                        </h1>
-                        <Select
-                            aria-required
-                            defaultValue="-- Hot-or-Ice --"
-                            style={{ width: '100%' }}
-                            options={[
-                                { value: 'Iced', label: 'Iced' },
-                                { value: 'Hot', label: 'Hot' },
-                            ]}
-                        />
-                        <label htmlFor="notes">Notes</label>
-                        <TextArea
-                            showCount
-                            maxLength={50}
-                            placeholder="(Notes...)"
-                            style={{
-                                height: '100%',
-                                resize: 'none',
-                                marginBottom: '8px',
-                            }}
-                        />
-                    </div>
-                </div>
-            </Modal> */}
         </Fragment>
     );
 }

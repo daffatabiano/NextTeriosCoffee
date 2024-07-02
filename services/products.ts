@@ -1,7 +1,8 @@
 import instance from '@/lib/axios/instance';
 
 const productServices = {
-    products: () => instance.get('api/products'),
+    get: () => instance.get('api/products'),
+    upload: () => instance.get('api/products'),
 };
 
 export default productServices;
