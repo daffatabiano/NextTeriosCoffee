@@ -18,7 +18,7 @@ export const FormSignIn = ({
     onSubmit,
     onClick,
     type,
-    disabled,
+    isLoading,
 }: {
     title?: string;
     path: string;
@@ -26,7 +26,7 @@ export const FormSignIn = ({
     onSubmit?: FormEventHandler<HTMLFormElement>;
     onClick?: () => void;
     type: 'submit' | 'button' | 'reset';
-    disabled?: boolean;
+    isLoading?: boolean;
 }): JSX.Element => {
     return (
         <Form onSubmit={onSubmit}>
@@ -57,9 +57,9 @@ export const FormSignIn = ({
             <div className="flex flex-col justify-center items-center">
                 <Button
                     type={type}
-                    text="Sign In"
+                    text={isLoading ? 'Loading..' : 'Sign in'}
                     onClick={onClick}
-                    disabled={disabled}
+                    disabled={isLoading ? true : false}
                 />
                 <Link href={path} className="text-blue-950 no-underline">
                     Login as {role}
@@ -72,6 +72,7 @@ export const FormSignIn = ({
 export const FormSignUp = (): JSX.Element => {
     const [isLoading, setIsLoading] = useState(false);
     const [api, contextHolder] = notification.useNotification();
+    const route = useRouter();
     const handleRegister = async (e: FormEvent<HTMLFormElement>) => {
         try {
             e.preventDefault();
@@ -102,6 +103,7 @@ export const FormSignUp = (): JSX.Element => {
                             description: 'Account is created',
                         });
                         setIsLoading(false);
+                        route.push('/login');
                     } else {
                         api['error']({
                             message: 'Register fail',
@@ -170,7 +172,11 @@ export const FormSignUp = (): JSX.Element => {
                     />
                 </div>
                 <div className="flex flex-col justify-center items-center">
-                    <Button type="submit" text="Sign Up" disabled={isLoading} />
+                    <Button
+                        type="submit"
+                        text={isLoading ? 'Loading..' : 'Sign Up'}
+                        disabled={isLoading}
+                    />
                 </div>
             </Form>
         </>
@@ -203,16 +209,17 @@ export default function Page() {
                 api['success']({
                     message: 'Login Success',
                     description: 'Welcome Back !',
-                    duration: 1,
                 });
-                setIsLoading(false);
-                router.push('/dashboard');
+                setTimeout(() => {
+                    setIsLoading(false);
+                    router.push('/dashboard');
+                }, 500);
             } else if (res?.error) {
+                setIsLoading(false);
                 api['error']({
                     message: 'Login Failed',
                     description: 'User Not Found',
                 });
-                setIsLoading(false);
             } else {
                 setIsLoading(false);
             }
@@ -237,7 +244,7 @@ export default function Page() {
                     title=""
                     path="/login/admin"
                     role="Admin"
-                    disabled={isLoading}
+                    isLoading={isLoading}
                 />
             ),
         },
