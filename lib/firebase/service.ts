@@ -10,6 +10,7 @@ import {
     where,
 } from 'firebase/firestore';
 import app from './firebase';
+import bcrypt from 'bcrypt';
 
 const firebase = getFirestore(app);
 
@@ -35,6 +36,37 @@ export async function retrieveDataById(collectionName: string, id: string) {
         ...doc.data(),
     }));
     return data[0];
+}
+
+export async function retrieveDataByField(
+    collectionName: string,
+    field: string,
+    value: string
+) {
+    const q = query(
+        collection(firebase, collectionName),
+        where(field, '==', value)
+    );
+    const snapshot = await getDocs(q);
+    const data = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+    }));
+    return data;
+}
+
+export async function addData(
+    collectionName: string,
+    data: any,
+    callback: Function
+) {
+    await addDoc(collection(firebase, collectionName), data)
+        .then((res: any) => {
+            callback(true, res);
+        })
+        .catch((error) => {
+            callback(false, error);
+        });
 }
 
 export async function createProduct(products: any) {
@@ -63,6 +95,45 @@ export async function createProduct(products: any) {
     } catch (error) {
         console.error('Error adding document: ', error);
         throw error;
+    }
+}
+
+export async function createAccount(
+    userData: any
+): Promise<{ status: boolean; message: string }> {
+    const queryUsers = query(collection(firebase, 'users'));
+    const snapshotUsers = await getDocs(queryUsers);
+    const usersData = snapshotUsers.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+    }));
+    if (usersData.length >= 5 && userData.role === 'admin') {
+        return { status: false, message: 'Maximum admin reached' };
+    }
+    const userQuery = query(
+        collection(firebase, 'users'),
+        where('email', '==', userData.email)
+    );
+    const snapshot = await getDocs(userQuery);
+    const data = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+    }));
+    userData.role = 'member';
+    userData.created_At = new Date();
+    userData.updated_At = new Date();
+    userData.password = await bcrypt.hash(userData.password, 10);
+    userData.passwordRepeat = await bcrypt.hash(userData.passwordRepeat, 10);
+    if (data.length === 0) {
+        try {
+            await addDoc(collection(firebase, 'users'), userData);
+            return { status: true, message: 'User created successfully' };
+        } catch (error) {
+            return { status: false, message: 'Failed to create user' };
+        }
+    } else {
+        console.log('User already exists');
+        return { status: false, message: 'Email aready registered' };
     }
 }
 

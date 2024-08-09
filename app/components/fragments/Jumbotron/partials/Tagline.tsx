@@ -7,13 +7,13 @@ export default function Tagline() {
                 start your day with a cup of{' '}
                 <span className="text-yellow-900">coffee!</span>
             </h1>
-            <p className="font-light md:w-[75%] md:pt-5 text-lg normal-case">
+            <p className="font-light md:w-[75%] md:pt-5 text-lg normal-case mb-10">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi
                 ullam quae, exercitationem aliquam velit earum.
             </p>
             <Link
                 href="#menu"
-                className="focus:outline-none md:mt-[50px] mt-10 text-white text-lg bg-yellow-800 hover:bg-yellow-900 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900"
+                className="focus:outline-none md:mt-[50px] mt-[30px] text-white text-lg bg-yellow-800 hover:bg-yellow-900 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
             >
                 Buy Now
             </Link>

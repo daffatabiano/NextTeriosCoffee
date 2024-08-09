@@ -2,7 +2,7 @@ import instance from '@/lib/axios/instance';
 
 const productServices = {
     get: () => instance.get('api/products'),
-    upload: (data: any) =>
+    upload: (data: UploadType) =>
         instance.put(
             'api/products',
             { data },

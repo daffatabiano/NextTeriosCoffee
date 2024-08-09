@@ -1,27 +1,25 @@
-import type { Metadata } from 'next';
+'use client';
+
 import { Inter } from 'next/font/google';
 import './globals.css';
-import Navbar from './components/fragments/Navbar';
-import Jumbotron from './components/fragments/Jumbotron';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
-import { useRouter } from 'next/navigation';
+import { SessionProvider } from 'next-auth/react';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export const metadata: Metadata = {
-    title: 'Terios Toast and Coffee',
-    description: 'Best Coffee Shop Ever!',
-};
-
 export default function RootLayout({
     children,
+    session,
 }: Readonly<{
     children: React.ReactNode;
+    session: any;
 }>) {
     return (
         <html lang="en">
             <body className={inter.className}>
-                <AntdRegistry>{children}</AntdRegistry>
+                <SessionProvider session={session}>
+                    <AntdRegistry>{children}</AntdRegistry>
+                </SessionProvider>
             </body>
         </html>
     );
