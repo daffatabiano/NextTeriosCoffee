@@ -1,3 +1,5 @@
+'use client';
+
 import { FormSignIn } from '../page';
 
 export default function page() {
@@ -11,7 +13,13 @@ export default function page() {
                 />
             </div>
             <div className="h-[70%] w-full flex px-8 py-2 items-center">
-                <FormSignIn path="/login" role="user" title="as Admin" />
+                <FormSignIn
+                    type="submit"
+                    onSubmit={() => {}}
+                    path="/login"
+                    role="user"
+                    title="as Admin"
+                />
             </div>
         </div>
     );

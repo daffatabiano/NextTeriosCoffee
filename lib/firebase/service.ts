@@ -137,6 +137,24 @@ export async function createAccount(
     }
 }
 
+export async function login(email: string) {
+    const userQuery = query(
+        collection(firebase, 'users'),
+        where('email', '==', email)
+    );
+    const snapshot = await getDocs(userQuery);
+    const data = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+    }));
+
+    if (data) {
+        return data[0];
+    } else {
+        return null;
+    }
+}
+
 export async function updateProduct(
     id: string,
     product: any
