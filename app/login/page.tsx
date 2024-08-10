@@ -261,11 +261,11 @@ export default function Page() {
         <>
             {contextHolder}
             <div className="h-screen w-full bg-[#ebeff6] flex flex-col">
-                <div className="h-[30%] w-full  flex justify-center">
+                <div className="h-[30%] w-full flex justify-center">
                     <img
                         src="/img/login.png"
                         alt=""
-                        className="w-[50%] h-full object-cover object-center"
+                        className="w-[45%] sm:w-[30%] md:w-[20%] h-full object-cover object-center"
                     />
                 </div>
                 <div className="h-[70%] w-full flex px-8 py-2">
@@ -277,7 +277,7 @@ export default function Page() {
                         items={items}
                         onChange={onChange}
                         indicator={{ size: md ? 200 : 50, align: 'center' }}
-                        tabBarGutter={xs ? 100 : 225}
+                        tabBarGutter={xs ? 85 : 225}
                     />
                 </div>
             </div>
