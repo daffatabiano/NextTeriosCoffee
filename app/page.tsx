@@ -7,7 +7,7 @@ export default function Home() {
         <>
             <Jumbotron />
             <Navbar />
-            <main className="p-4">
+            <main className="py-4 md:px-36">
                 <Menu />
                 <h1>Hello World</h1>
             </main>

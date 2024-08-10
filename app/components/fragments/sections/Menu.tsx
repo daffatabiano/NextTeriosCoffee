@@ -62,6 +62,8 @@ export default function Menu() {
                 span={24}
                 style={{
                     backgroundColor: '#fff',
+                    borderRadius: '10px',
+                    boxShadow: '0px 0px 15px 0px rgb(230, 230, 230)',
                     padding: '15px',
                     width: '100%',
                 }}
@@ -70,7 +72,18 @@ export default function Menu() {
                     menu
                 </h1>
                 <h2 className="text-xl font-bold mb-2"> ☕ Hot Coffee </h2>
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-4 md:grid md:grid-cols-2">
+                    {isProducts?.map((item, index): any =>
+                        isProducts.length <= 0 || isLoading ? (
+                            <Skeleton key={index + 1} active />
+                        ) : (
+                            <Card
+                                key={index + 1}
+                                {...item}
+                                onClick={showModal}
+                            />
+                        )
+                    )}
                     {isProducts?.map((item, index): any =>
                         isProducts.length <= 0 || isLoading ? (
                             <Skeleton key={index + 1} active />

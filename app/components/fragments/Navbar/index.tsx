@@ -80,7 +80,7 @@ export default function Navbar() {
                     </div>
                 </div>
             </Modal>
-            <nav className="sticky top-0 z-50">
+            <nav className="sticky top-0 z-50 md:px-32">
                 <nav className="bg-transparent backdrop-blur-sm  border-gray-200 text-gray-900 px-4">
                     <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl md:px-10  py-4">
                         <Logo />
