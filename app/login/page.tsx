@@ -10,6 +10,7 @@ import { redirect, useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
 import authServices from '@/services/auth';
 import { FormEvent, FormEventHandler, useState } from 'react';
+import useBreakpoint from 'antd/es/grid/hooks/useBreakpoint';
 
 export const FormSignIn = ({
     title = '',
@@ -184,6 +185,7 @@ export const FormSignUp = (): JSX.Element => {
 };
 
 export default function Page() {
+    const { md, xs } = useBreakpoint();
     const router = useRouter();
     const onChange = (key: string) => {
         console.log(key);
@@ -273,8 +275,8 @@ export default function Page() {
                         defaultActiveKey="1"
                         items={items}
                         onChange={onChange}
-                        indicator={{ size: 200, align: 'center' }}
-                        tabBarGutter={225}
+                        indicator={{ size: md ? 200 : 50, align: 'center' }}
+                        tabBarGutter={xs ? 100 : 225}
                     />
                 </div>
             </div>
