@@ -134,7 +134,7 @@ export const FormSignUp = (): JSX.Element => {
                 <div className="text-blue-950 mb-2">
                     <h1 className="text-3xl  font-extrabold">Sign Up</h1>
                     <p className="text-md font-light py-2 px-1">
-                        Create your accound and be part of us
+                        Create your account and be part of us
                     </p>
                 </div>
                 <div>

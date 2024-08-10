@@ -9,7 +9,7 @@ export default function page() {
                 <img
                     src="/img/admin-login.png"
                     alt=""
-                    className="w-[50%] h-full object-cover object-center"
+                    className="w-[45%] sm:w-[30%] md:w-[20%] h-full object-cover object-center"
                 />
             </div>
             <div className="h-[70%] w-full flex px-8 py-2 items-center">
