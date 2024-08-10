@@ -9,8 +9,8 @@ import { EditOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import { useSession } from 'next-auth/react';
 
 export default function Navbar() {
-    const { data: userData }: any = useSession();
-    console.log(userData, 'userData');
+    const { data: session }: any = useSession();
+    console.log(session, 'session');
     const { TextArea } = Input;
     const [open, setOpen] = useState(false);
     const showDrawer = () => {
@@ -20,10 +20,6 @@ export default function Navbar() {
     const onClose = () => {
         setOpen(false);
     };
-
-    useEffect(() => {
-        userData;
-    }, [userData]);
 
     const [isOpen, setIsOpen] = useState(false);
     const [confirmLoading, setConfirmLoading] = useState(false);
@@ -169,7 +165,10 @@ export default function Navbar() {
                     <div className="max-w-screen-xl flex flex-wrap justify-center md:justify-start items-center md:px-10 py-3 mx-auto">
                         <div className="flex items-center">
                             <ul className="flex flex-row font-medium mt-0  space-x-6 rtl:space-x-reverse text-sm">
-                                <NavList items={NavbarLists} />
+                                <NavList
+                                    items={NavbarLists}
+                                    session={session}
+                                />
                             </ul>
                         </div>
                     </div>

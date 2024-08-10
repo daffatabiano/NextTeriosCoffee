@@ -11,7 +11,7 @@ export interface CardProps {
 export default function Card(props: any) {
     const { onClick, img, name, price, category } = props;
     return (
-        <div className="flex md:flex-col md:h-full md:w-full justify-between h-[100px] border-[1.5px] shadow-[0_0_4px_2px] shadow-slate-200 border-yellow-500 rounded-xl overflow-hidden">
+        <div className="flex hover:shadow-md hover:shadow-slate-400 hover:transform  hover:-translate-y-1 hover:scale-102 duration-300 md:flex-col md:h-full md:w-full justify-between h-[100px] border-[1.5px] shadow-[0_0_4px_2px] shadow-slate-200 border-yellow-500 rounded-xl overflow-hidden">
             <div className="w-[30%] h-full md:w-full md:h-[100px]">
                 <img
                     className=" h-full w-full m-0 object-cover object-center "
