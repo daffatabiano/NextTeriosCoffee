@@ -1,6 +1,6 @@
 'use client';
 
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, PropsWithChildren, useEffect, useState } from 'react';
 import { Col, Skeleton } from 'antd';
 import Card from '@/app/components/ui/Card';
 import { MenuData } from './partials/data/MenuData';
@@ -73,7 +73,7 @@ export default function Menu() {
                 </h1>
                 <h2 className="text-xl font-bold mb-2"> ☕ Hot Coffee </h2>
                 <div className="flex flex-col gap-4 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xxl:grid-cols-auto">
-                    {isProducts?.map((item, index): any =>
+                    {isProducts?.map((item: any, index: number) =>
                         isProducts.length <= 0 || isLoading ? (
                             <Skeleton key={index + 1} active />
                         ) : (
@@ -84,7 +84,7 @@ export default function Menu() {
                             />
                         )
                     )}
-                    {isProducts?.map((item, index): any =>
+                    {isProducts?.map((item: PropsWithChildren, index: number) =>
                         isProducts.length <= 0 || isLoading ? (
                             <Skeleton key={index + 1} active />
                         ) : (
