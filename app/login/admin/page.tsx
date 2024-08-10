@@ -12,7 +12,7 @@ export default function page() {
                     className="w-[45%] sm:w-[30%] md:w-[20%] h-full object-cover object-center"
                 />
             </div>
-            <div className="h-[70%] w-full flex px-8 py-2 items-center">
+            <div className="h-[70%] w-full  flex px-8 py-2 items-center">
                 <FormSignIn
                     type="submit"
                     onSubmit={() => {}}

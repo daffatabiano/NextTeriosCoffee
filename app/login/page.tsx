@@ -33,7 +33,7 @@ export const FormSignIn = ({
 }): JSX.Element => {
     return (
         <Form onSubmit={onSubmit}>
-            <div className="text-blue-950 mb-2">
+            <div className="text-blue-950 mb-2 ">
                 <h1 className="text-3xl  font-extrabold">Sign In {title}</h1>
                 <p className="text-md font-light py-2 px-1">{desc}</p>
             </div>
@@ -261,7 +261,7 @@ export default function Page() {
     return (
         <>
             {contextHolder}
-            <div className="h-screen w-full bg-[#ebeff6] flex flex-col">
+            <div className=" w-full bg-[#ebeff6] flex flex-col">
                 <div className="h-[30%] w-full flex justify-center">
                     <img
                         src="/img/login.png"
@@ -269,7 +269,7 @@ export default function Page() {
                         className="w-[45%] sm:w-[30%] md:w-[20%] h-full object-cover object-center"
                     />
                 </div>
-                <div className="h-[70%] w-full flex px-8 py-2">
+                <div className="h-[70%] w-full flex px-8 py-2 md:px-36 lg:px-72 xl:px-96 xxl:px-128">
                     <Tabs
                         style={{ width: '100%' }}
                         size="large"
