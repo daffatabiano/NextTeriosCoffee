@@ -19,6 +19,7 @@ export default function page() {
                     path="/login"
                     role="user"
                     title="as Admin"
+                    desc="Please input your credentials with admin role"
                 />
             </div>
         </div>

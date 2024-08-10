@@ -20,6 +20,7 @@ export const FormSignIn = ({
     onClick,
     type,
     isLoading,
+    desc,
 }: {
     title?: string;
     path: string;
@@ -28,14 +29,13 @@ export const FormSignIn = ({
     onClick?: () => void;
     type: 'submit' | 'button' | 'reset';
     isLoading?: boolean;
+    desc?: string;
 }): JSX.Element => {
     return (
         <Form onSubmit={onSubmit}>
             <div className="text-blue-950 mb-2">
                 <h1 className="text-3xl  font-extrabold">Sign In {title}</h1>
-                <p className="text-md font-light py-2 px-1">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </p>
+                <p className="text-md font-light py-2 px-1">{desc}</p>
             </div>
             <div>
                 <Input.Label label="Email" />
@@ -247,6 +247,7 @@ export default function Page() {
                     title=""
                     path="/login/admin"
                     role="Admin"
+                    desc="Take a good time with a cup of coffee"
                     isLoading={isLoading}
                 />
             ),
