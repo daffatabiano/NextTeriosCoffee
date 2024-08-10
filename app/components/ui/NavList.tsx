@@ -4,7 +4,8 @@ import style from './NavList.module.css';
 type NavListProps = {
     items: { name: string; path: string }[];
 };
-export default function NavList({ items }: NavListProps) {
+export default function NavList({ items }: NavListProps, prop: any) {
+    console.log(prop, 'proppiee');
     return (
         <>
             {items.map((item, index) => (

@@ -1,13 +1,16 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Logo from '../../ui/Logo';
 import NavList from '../../ui/NavList';
 import { NavbarLists } from './partials/NavbarLists';
 import { Button, Drawer, Badge, Select, Input, Divider, Modal } from 'antd';
 import { EditOutlined, ShoppingCartOutlined } from '@ant-design/icons';
+import { useSession } from 'next-auth/react';
 
 export default function Navbar() {
+    const { data: userData }: any = useSession();
+    console.log(userData, 'userData');
     const { TextArea } = Input;
     const [open, setOpen] = useState(false);
     const showDrawer = () => {
@@ -17,6 +20,10 @@ export default function Navbar() {
     const onClose = () => {
         setOpen(false);
     };
+
+    useEffect(() => {
+        userData;
+    }, [userData]);
 
     const [isOpen, setIsOpen] = useState(false);
     const [confirmLoading, setConfirmLoading] = useState(false);

@@ -104,7 +104,7 @@ export const FormSignUp = (): JSX.Element => {
                             description: 'Account is created',
                         });
                         setIsLoading(false);
-                        route.push('/login');
+                        route.push('/');
                     } else {
                         api['error']({
                             message: 'Register fail',
@@ -118,6 +118,7 @@ export const FormSignUp = (): JSX.Element => {
                         message: 'Register Fail',
                         description: 'Something went wrong',
                     });
+                    console.log(err);
                     setIsLoading(false);
                 });
         } catch (err) {
@@ -205,7 +206,7 @@ export default function Page() {
             const res = await signIn('credentials', {
                 ...body,
                 redirect: false,
-                callbackUrl: '/dashboard',
+                callbackUrl: '/',
             });
             if (res?.status === 200) {
                 api['success']({
@@ -214,8 +215,8 @@ export default function Page() {
                 });
                 setTimeout(() => {
                     setIsLoading(false);
-                    router.push('/dashboard');
-                }, 500);
+                    router.push('/');
+                }, 0);
             } else if (res?.error) {
                 setIsLoading(false);
                 api['error']({
