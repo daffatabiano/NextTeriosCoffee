@@ -43,6 +43,7 @@ export default function Navbar() {
         console.log('Clicked cancel button');
         setIsOpen(false);
     };
+
     return (
         <>
             <Modal

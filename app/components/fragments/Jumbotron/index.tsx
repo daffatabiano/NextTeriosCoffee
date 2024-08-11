@@ -7,7 +7,7 @@ import Tagline from './partials/Tagline';
 
 export default function Jumbotron() {
     return (
-        <div className="relative w-[100vw] h-[100vh]">
+        <div className="relative w-full h-screen">
             {/* <!-- Carousel wrapper --> */}
             <div className="relative h-full overflow-hidden">
                 <div
