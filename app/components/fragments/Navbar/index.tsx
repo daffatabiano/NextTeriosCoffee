@@ -5,7 +5,11 @@ import Logo from '../../ui/Logo';
 import NavList from '../../ui/NavList';
 import { NavbarLists } from './partials/NavbarLists';
 import { Button, Drawer, Badge, Select, Input, Divider, Modal } from 'antd';
-import { EditOutlined, ShoppingCartOutlined } from '@ant-design/icons';
+import {
+    DollarOutlined,
+    EditOutlined,
+    ShoppingCartOutlined,
+} from '@ant-design/icons';
 import { useSession } from 'next-auth/react';
 
 export default function Navbar() {
@@ -150,10 +154,10 @@ export default function Navbar() {
                                         <Divider />
                                         <Button
                                             style={{
-                                                width: '20%',
+                                                width: '25%',
                                             }}
                                         >
-                                            Order
+                                            <DollarOutlined /> Order
                                         </Button>
                                     </div>
                                 </div>
