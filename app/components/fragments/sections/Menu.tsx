@@ -7,6 +7,7 @@ import { MenuData } from './partials/data/MenuData';
 import ModalOrder, { eventChange } from '../ModalOrder';
 import { fetcher } from '@/lib/axios/instance';
 import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 export default function Menu() {
     const [open, setOpen] = useState(false);
@@ -15,6 +16,7 @@ export default function Menu() {
     const [isVariant, setIsVariant] = useState('');
     const [isProducts, setIsProducts]: any = useState<any>([]);
     const { status } = useSession();
+    const { push } = useRouter();
     console.log(status);
     const showModal = () => {
         setOpen(true);
@@ -49,6 +51,7 @@ export default function Menu() {
             console.log(error);
         }
     };
+    console.log(isProducts);
 
     useEffect(() => {
         getProductsData();
@@ -91,7 +94,16 @@ export default function Menu() {
                             <Card
                                 key={index + 1}
                                 {...item}
-                                onClick={showModal}
+                                onClick={
+                                    status === 'unauthenticated'
+                                        ? () => push('/login')
+                                        : showModal
+                                }
+                                buttonType={
+                                    status === 'unauthenticated'
+                                        ? 'button'
+                                        : 'submit'
+                                }
                             />
                         )
                     )}
