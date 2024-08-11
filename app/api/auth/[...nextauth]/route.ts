@@ -52,17 +52,23 @@ const authOptions: NextAuthOptions = {
             if ('id' in token) {
                 session.user.id = token.id;
             }
-            if ('name' in token) {
+            if ('username' in token) {
                 session.user.username = token.username;
             }
-            if ('image' in token) {
-                session.user.imageUrl = token.image;
+            if ('imageUrl' in token) {
+                session.user.imageUrl = token.imageUrl;
             }
             if ('role' in token) {
                 session.user.role = token.role;
             }
             if ('email' in token) {
                 session.user.email = token.email;
+            }
+            if ('updated_At' in token) {
+                session.user.updated_At = token.updated_At;
+            }
+            if ('created_At' in token) {
+                session.user.created_At = token.created_At;
             }
             return session;
         },

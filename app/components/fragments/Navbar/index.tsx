@@ -164,7 +164,7 @@ export default function Navbar() {
                 <nav className="bg-[rgba(225,225,225,0.5)] rounded-full">
                     <div className="max-w-screen-xl flex flex-wrap justify-center md:justify-start items-center md:px-10 py-3 mx-auto">
                         <div className="flex items-center">
-                            <ul className="flex flex-row font-medium mt-0  space-x-6 rtl:space-x-reverse text-sm">
+                            <ul className="flex flex-row font-medium mt-0 space-x-4 rtl:space-x-reverse text-sm">
                                 <NavList
                                     items={NavbarLists}
                                     session={session}

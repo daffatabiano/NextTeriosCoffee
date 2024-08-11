@@ -1,24 +1,11 @@
-.line::before {
-    content: '';
-    position: absolute;
-    display: inline-block;
-    bottom: 0;
-    width: 2.5%;
-    height: 2px;
-    transform: scaleX(0);
-    background-color: #000;
-}
-
-.line::before:hover {
-    display: inline-block;
-    transform: scaleX(1);
-    transition: width 0.3s ease;
+.line {
+    @apply text-xs md:text-sm;
 }
 
 .login {
     @apply bg-yellow-500;
     @apply text-white;
-    @apply px-6;
+    @apply px-4;
     @apply py-2;
     @apply rounded-full;
     @apply font-bold;

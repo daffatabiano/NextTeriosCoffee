@@ -6,15 +6,15 @@ type NavListProps = {
     session: any;
 };
 export default function NavList(prop: NavListProps) {
-    console.log(prop.session, 'prop');
+    const displayName = prop?.session?.user?.username.slice(0, 5);
 
     if (prop.session) {
         const updateItems = prop.items.map((item) => {
             if (item.name === 'Login' && prop.session.user) {
                 return {
                     ...item,
-                    name: prop?.session?.user?.email,
-                    path: '/login',
+                    name: displayName,
+                    path: '/logout',
                 };
             }
             return item;
@@ -26,7 +26,8 @@ export default function NavList(prop: NavListProps) {
                         <Link
                             href={item.path}
                             className={
-                                item.name === prop.session.user?.email
+                                item.name === 'Login' ||
+                                item.name === displayName
                                     ? style.login
                                     : style.line
                             }

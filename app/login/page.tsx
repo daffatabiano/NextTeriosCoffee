@@ -269,7 +269,7 @@ export default function Page() {
                         className="w-[45%] sm:w-[30%] md:w-[20%] h-full object-cover object-center"
                     />
                 </div>
-                <div className="h-[70%] w-full flex px-8 py-2 md:px-36 lg:px-72 xl:px-96 xxl:px-128">
+                <div className="h-[70%] w-full flex px-6 py-2 md:px-36 lg:px-72 xl:px-96 xxl:px-128">
                     <Tabs
                         style={{ width: '100%' }}
                         size="large"
