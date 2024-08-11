@@ -155,12 +155,12 @@ export async function login(email: string) {
     }
 }
 
-export async function updateUser(id: string, userData: any): Promise<boolean> {
+export async function updateData(id: string, data: any): Promise<boolean> {
     const q = query(collection(firebase, 'users'), where('id', '==', id));
     const snapshot = await getDocs(q);
     if (!snapshot.empty) {
         const docRef = doc(firebase, 'users', snapshot.docs[0].id);
-        await updateDoc(docRef, userData);
+        await updateDoc(docRef, data);
         return true;
     } else {
         return false;
