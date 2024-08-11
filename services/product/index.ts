@@ -13,6 +13,17 @@ const productServices = {
                 },
             }
         ),
+    addToCart: (data: any) =>
+        instance.put(
+            'api/user/cart',
+            { data },
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json',
+                },
+            }
+        ),
 };
 
 export default productServices;

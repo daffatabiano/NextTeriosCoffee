@@ -21,15 +21,16 @@ export async function POST(req: NextRequest) {
             },
             { status: 200 }
         );
+    } else {
+        return NextResponse.json(
+            {
+                status: false,
+                statusCode: 400,
+                message: 'fail',
+            },
+            { status: 400 }
+        );
     }
-    return NextResponse.json(
-        {
-            status: false,
-            statusCode: 400,
-            message: 'fail',
-        },
-        { status: 400 }
-    );
 }
 
 export async function GET() {
