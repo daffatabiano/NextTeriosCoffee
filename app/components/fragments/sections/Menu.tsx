@@ -17,7 +17,7 @@ export default function Menu() {
     const [isProducts, setIsProducts]: any = useState<any>([]);
     const { status } = useSession();
     const router = useRouter();
-    console.log(router, 'this is router');
+
     const showModal = () => {
         setOpen(true);
     };
@@ -95,12 +95,7 @@ export default function Menu() {
                                 {...item}
                                 onClick={
                                     status === 'unauthenticated'
-                                        ? () =>
-                                              router.push(
-                                                  `/login?callbackUrl=${
-                                                      (router as any).asPath
-                                                  }`
-                                              )
+                                        ? () => router.push(`/login`)
                                         : showModal
                                 }
                                 buttonType={
