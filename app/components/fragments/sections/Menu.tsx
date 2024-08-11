@@ -8,6 +8,7 @@ import ModalOrder, { eventChange } from '../ModalOrder';
 import { fetcher } from '@/lib/axios/instance';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import { CoffeeOutlined, RestOutlined } from '@ant-design/icons';
 
 export default function Menu() {
     const [open, setOpen] = useState(false);
@@ -71,7 +72,10 @@ export default function Menu() {
                 <h1 className="sm:text-3xl text-2xl font-extrabold text-center mb-5 uppercase text-yellow-800">
                     menu
                 </h1>
-                <h2 className="text-xl font-bold mb-2"> ☕ Hot Coffee </h2>
+                <h2 className="text-xl font-bold mb-2">
+                    {' '}
+                    <CoffeeOutlined /> Hot Coffee{' '}
+                </h2>
                 <div className="flex flex-col gap-4 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xxl:grid-cols-auto">
                     {status === 'loading' &&
                         Array.from({ length: 9 }).map((_, index) => (
@@ -107,7 +111,10 @@ export default function Menu() {
                         )
                     )}
                 </div>
-                <h2 className="text-xl font-bold mb-2"> 🧊 Ice Coffee </h2>
+                <h2 className="text-xl font-bold mb-2">
+                    {' '}
+                    <RestOutlined /> Ice Coffee{' '}
+                </h2>
             </Col>
             <ModalOrder
                 isOpen={open}
