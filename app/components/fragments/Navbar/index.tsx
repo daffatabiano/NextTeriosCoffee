@@ -115,6 +115,7 @@ export default function Navbar() {
                                     <div className="flex">
                                         <div className="w-[30%]">
                                             <img
+                                                className="rounded"
                                                 src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/flat-white-3402c4f.jpg"
                                                 alt=""
                                             />
