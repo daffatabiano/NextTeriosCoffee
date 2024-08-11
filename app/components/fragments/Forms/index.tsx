@@ -70,7 +70,7 @@ export const FormSignIn = ({
 export const FormSignUp = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [api, contextHolder] = notification.useNotification();
-    const route = useRouter();
+    const router = useRouter();
     const handleRegister = async (e: FormEvent<HTMLFormElement>) => {
         try {
             e.preventDefault();
@@ -111,7 +111,7 @@ export const FormSignUp = () => {
                         });
                         setTimeout(() => {
                             setIsLoading(false);
-                            window.location.reload();
+                            router.refresh();
                         }, 1000);
                     } else {
                         api['error']({
