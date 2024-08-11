@@ -155,6 +155,18 @@ export async function login(email: string) {
     }
 }
 
+export async function updateUser(id: string, userData: any): Promise<boolean> {
+    const q = query(collection(firebase, 'users'), where('id', '==', id));
+    const snapshot = await getDocs(q);
+    if (!snapshot.empty) {
+        const docRef = doc(firebase, 'users', snapshot.docs[0].id);
+        await updateDoc(docRef, userData);
+        return true;
+    } else {
+        return false;
+    }
+}
+
 export async function updateProduct(
     id: string,
     product: any
