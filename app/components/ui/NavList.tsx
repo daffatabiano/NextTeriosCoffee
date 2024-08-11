@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import style from './NavList.module.css';
+import { useRouter } from 'next/router';
 
 type NavListProps = {
     items: { name: string; path: string }[];
@@ -14,7 +15,7 @@ export default function NavList(prop: NavListProps) {
                 return {
                     ...item,
                     name: displayName,
-                    path: '/logout',
+                    path: '/profile',
                 };
             }
             return item;
