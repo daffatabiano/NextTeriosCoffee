@@ -92,34 +92,26 @@ export const FormSignUp = () => {
                         'Please enter the same password in both fields',
                 });
                 return;
-            } else {
-                setIsLoading(false);
-                null;
-            }
-
-            if (body.username > 8) {
+            } else if (body.username >= 8) {
                 setIsLoading(false);
                 api['error']({
                     message: 'Username is too long',
                     description: 'Username must be less than 8 characters',
                 });
                 return;
-            } else {
-                setIsLoading(false);
-                null;
             }
 
             await authServices
                 .register(body)
                 .then((res: any) => {
-                    if (res?.status === 200) {
+                    if (!res?.status && !res.error) {
                         api['success']({
                             message: 'Register is success',
                             description: 'Account is created',
                         });
                         setTimeout(() => {
                             setIsLoading(false);
-                            route.push('/login');
+                            window.location.reload();
                         }, 1000);
                     } else {
                         api['error']({

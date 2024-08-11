@@ -79,7 +79,7 @@ export default function Page() {
         {
             key: '2',
             label: 'Sign Up',
-            children: <FormSignUp changeSection={() => onChange('1')} />,
+            children: <FormSignUp />,
         },
     ];
     return (
