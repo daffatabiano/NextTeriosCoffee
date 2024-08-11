@@ -14,7 +14,6 @@ import { useSession } from 'next-auth/react';
 
 export default function Navbar() {
     const { data: session }: any = useSession();
-    console.log(session, 'session');
     const { TextArea } = Input;
     const [open, setOpen] = useState(false);
     const showDrawer = () => {
