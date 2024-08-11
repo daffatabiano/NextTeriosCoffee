@@ -70,7 +70,7 @@ export const FormSignIn = ({
     );
 };
 
-export const FormSignUp = (): JSX.Element => {
+export const FormSignUp = (prop): JSX.Element => {
     const [isLoading, setIsLoading] = useState(false);
     const [api, contextHolder] = notification.useNotification();
     const route = useRouter();
@@ -104,7 +104,7 @@ export const FormSignUp = (): JSX.Element => {
                             description: 'Account is created',
                         });
                         setIsLoading(false);
-                        route.push('/');
+                        prop.changeSection;
                     } else {
                         api['error']({
                             message: 'Register fail',
@@ -255,7 +255,7 @@ export default function Page() {
         {
             key: '2',
             label: 'Sign Up',
-            children: <FormSignUp />,
+            children: <FormSignUp changeSection={onChange('1')} />,
         },
     ];
     return (
