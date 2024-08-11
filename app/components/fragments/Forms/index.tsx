@@ -6,7 +6,7 @@ import Button from '../../ui/Form/Button';
 import Form from '../../ui/Form/Form';
 import Input from '../../ui/Form/Input';
 import authServices from '@/services/auth';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { notification } from 'antd';
 
 export const FormSignIn = ({
@@ -67,7 +67,7 @@ export const FormSignIn = ({
     );
 };
 
-export const FormSignUp = (prop: { changeSection: () => void }) => {
+export const FormSignUp = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [api, contextHolder] = notification.useNotification();
     const route = useRouter();
@@ -90,18 +90,23 @@ export const FormSignUp = (prop: { changeSection: () => void }) => {
                     description:
                         'Please enter the same password in both fields',
                 });
+                return;
+            } else {
+                null;
             }
 
             await authServices
                 .register(body)
                 .then((res: any) => {
-                    if (!res?.error) {
+                    if (res?.status === 200) {
                         api['success']({
                             message: 'Register is success',
                             description: 'Account is created',
                         });
-                        setIsLoading(false);
-                        prop.changeSection;
+                        setTimeout(() => {
+                            setIsLoading(false);
+                            route.push('/login');
+                        }, 1000);
                     } else {
                         api['error']({
                             message: 'Register fail',

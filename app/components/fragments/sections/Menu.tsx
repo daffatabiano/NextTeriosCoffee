@@ -51,7 +51,6 @@ export default function Menu() {
             console.log(error);
         }
     };
-    console.log(isProducts);
 
     useEffect(() => {
         getProductsData();
