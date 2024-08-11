@@ -6,10 +6,12 @@ export interface CardProps {
     name: string;
     price: number;
     category?: string;
+    buttonType?: 'submit' | 'button' | 'reset';
 }
 
 export default function Card(props: any) {
-    const { onClick, img, name, price, category }: CardProps = props;
+    const { onClick, img, name, price, category, buttonType }: CardProps =
+        props;
     return (
         <div className="flex hover:shadow-md hover:shadow-slate-400 hover:transform  hover:-translate-y-1 hover:scale-102 duration-300 md:flex-col md:h-full md:w-full justify-between h-[100px] border-[1.5px] shadow-[0_0_4px_2px] shadow-slate-200 border-yellow-500 rounded-xl overflow-hidden">
             <div className="w-[30%] h-full md:w-full md:h-[100px]">
@@ -33,6 +35,7 @@ export default function Card(props: any) {
             </div>
             <button
                 onClick={onClick}
+                type={buttonType}
                 className="w-[20%] h-full bg-yellow-500 text-white rounded-lg m-0 md:w-full md:p-2"
             >
                 Buy

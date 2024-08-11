@@ -6,14 +6,16 @@ import Card from '@/app/components/ui/Card';
 import { MenuData } from './partials/data/MenuData';
 import ModalOrder, { eventChange } from '../ModalOrder';
 import { fetcher } from '@/lib/axios/instance';
+import { useSession } from 'next-auth/react';
 
 export default function Menu() {
     const [open, setOpen] = useState(false);
     const [confirmLoading, setConfirmLoading] = useState(false);
-    const [isLoading, setIsLoading] = useState<boolean>(false);
     const [notes, setNotes] = useState('');
     const [isVariant, setIsVariant] = useState('');
     const [isProducts, setIsProducts]: any = useState<any>([]);
+    const { status } = useSession();
+    console.log(status);
     const showModal = () => {
         setOpen(true);
     };
@@ -39,15 +41,12 @@ export default function Menu() {
     };
 
     const getProductsData = async () => {
-        setIsLoading(true);
         try {
             const response = await fetcher('/api/products');
             const data = response;
             setIsProducts(data.data);
-            setIsLoading(false);
         } catch (error) {
             console.log(error);
-            setIsLoading(false);
         }
     };
 
@@ -55,7 +54,6 @@ export default function Menu() {
         getProductsData();
     }, []);
 
-    console.log(isProducts);
     return (
         <Fragment key="menu">
             <Col
@@ -73,21 +71,23 @@ export default function Menu() {
                 </h1>
                 <h2 className="text-xl font-bold mb-2"> ☕ Hot Coffee </h2>
                 <div className="flex flex-col gap-4 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xxl:grid-cols-auto">
-                    {isProducts?.map((item: any, index: number) =>
-                        isProducts.length <= 0 || isLoading ? (
-                            <Skeleton key={index + 1} active />
-                        ) : (
-                            <Card
-                                key={index + 1}
-                                {...item}
-                                onClick={showModal}
-                            />
-                        )
-                    )}
-                    {isProducts?.map((item: PropsWithChildren, index: number) =>
-                        isProducts.length <= 0 || isLoading ? (
-                            <Skeleton key={index + 1} active />
-                        ) : (
+                    {status === 'loading' &&
+                        Array.from({ length: 9 }).map((_, index) => (
+                            <div className="flex flex-col gap-4" key={index}>
+                                <Skeleton.Image
+                                    active
+                                    style={{ height: '100px', width: '220px' }}
+                                    className=" md:h-full md:w-full justify-between h-[100px]"
+                                />
+                                <Skeleton
+                                    active
+                                    paragraph={{ rows: 3 }}
+                                    className=" md:h-full md:w-full justify-between h-[100px]"
+                                />
+                            </div>
+                        ))}
+                    {isProducts?.map(
+                        (item: PropsWithChildren, index: number) => (
                             <Card
                                 key={index + 1}
                                 {...item}
