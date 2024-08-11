@@ -1,6 +1,6 @@
 'use client';
 
-import { FormSignIn } from '../page';
+import { FormSignIn } from '@/app/components/fragments/Forms';
 
 export default function page() {
     return (
