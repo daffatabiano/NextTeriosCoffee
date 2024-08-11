@@ -85,6 +85,7 @@ export const FormSignUp = () => {
             };
 
             if (body.password !== body.passwordRepeat) {
+                setIsLoading(false);
                 api['error']({
                     message: 'Password does not match',
                     description:
@@ -92,6 +93,19 @@ export const FormSignUp = () => {
                 });
                 return;
             } else {
+                setIsLoading(false);
+                null;
+            }
+
+            if (body.username > 8) {
+                setIsLoading(false);
+                api['error']({
+                    message: 'Username is too long',
+                    description: 'Username must be less than 8 characters',
+                });
+                return;
+            } else {
+                setIsLoading(false);
                 null;
             }
 

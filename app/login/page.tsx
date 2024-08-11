@@ -85,7 +85,7 @@ export default function Page() {
     return (
         <>
             {contextHolder}
-            <div className=" w-full bg-[#ebeff6] flex flex-col">
+            <div className=" w-full min-h-screen bg-[#ebeff6] flex flex-col">
                 <div className="h-[30%] w-full flex justify-center">
                     <img
                         src="/img/login.png"
