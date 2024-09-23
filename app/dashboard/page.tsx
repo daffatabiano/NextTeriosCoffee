@@ -8,7 +8,7 @@ import {
 } from '@ant-design/icons';
 import { Col, Row, Statistic, StatisticProps } from 'antd';
 import useBreakpoint from 'antd/es/grid/hooks/useBreakpoint';
-import CountUp from 'react-countup/build/CountUp';
+import CountUp from 'react-countup';
 
 const formatter: StatisticProps['formatter'] = (value: any) => (
     <CountUp
@@ -34,7 +34,7 @@ export default function Page() {
             <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
                 <div className="w-full md:w-[25%] my-4 flex justify-center items-center rounded-full ">
                     <img
-                        className="w-[200px] h-[200px] p-2 object-cover object-center rounded-full bg-slate-200"
+                className="w-[200px] h-[200px] p-2 object-cover object-center rounded-full bg-slate-200"
                         src=""
                         alt=""
                     />
